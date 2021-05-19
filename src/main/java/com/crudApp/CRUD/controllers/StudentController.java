@@ -35,7 +35,11 @@ public class StudentController {
     public ResponseEntity<Student> update(@RequestBody Student newStudent, @PathVariable(value = "id") Long id) {
         return studentRepository.findById(id)
                 .map(student -> {
-                    student.setName(newStudent.getName());
+                    student.setNames(newStudent.getNames());
+                    student.setAge(newStudent.getAge());
+                    student.setEmail(newStudent.getEmail());
+                    student.setNames(newStudent.getNames());
+                    student.setGender(newStudent.getGender());
                     studentRepository.save(student);
                     return ResponseEntity.ok(student);
                 })
